@@ -19,6 +19,11 @@ var addEmployee = function(){
   // clear inputs
   clearInputs();
   /// - maybe move to another function? - ///
+  calculateSalaryInformation();
+}; // end addEmployee
+
+var calculateSalaryInformation = function(){
+  console.log( 'in calculateSalaryInformation' );
   // calculate total salary and avg monthly salary
   var totalSalaries = 0;
   // for each employee add their salary on to the totalSalaries
@@ -31,9 +36,9 @@ var addEmployee = function(){
   console.log( 'averageSalary:', averageSalary );
   var monthlySalaryCost = totalSalaries / 12;
   console.log( 'monthlySalaryCost:', monthlySalaryCost );
-
+  // displayEmployees
   displayEmployees( averageSalary, monthlySalaryCost, totalSalaries );
-}; // end addEmployee
+}; // end calculateSalaryInformation
 
 var clearInputs = function(){
   console.log( 'in clearInputs' );
@@ -52,7 +57,7 @@ var displayEmployees = function( avgSal, monthlySal, totalSal ){
   outputDiv.innerHTML = '';
   // each employee
   for (var i = 0; i < employees.length; i++) {
-    var outputText = '<p>' + employees[i].lastName + ', ' + employees[i].firstName + ' (' + employees[i].employeeId + '): $' + employees[i].salary + '</p>';
+    var outputText = '<p>' + employees[i].lastName + ', ' + employees[i].firstName + ' (' + employees[i].employeeId + '): $' + employees[i].salary + '<button onclick="terminateEmployee( ' + i + ' );">Goodbye</button></p>';
     outputDiv.innerHTML += outputText;
   }
   // totalSalaries
@@ -65,3 +70,12 @@ var displayEmployees = function( avgSal, monthlySal, totalSal ){
   outputText = '<p>Monthly Salary Cost: $' + monthlySal + '</p>';
   outputDiv.innerHTML += outputText;
 }; // end displayEmployees
+
+var terminateEmployee = function( index ){
+  console.log( 'in terminateEmployee:', index );
+  console.log( '(ex)terminating:', employees[ index ] );
+  // splice 1 from the employees array at our index
+  employees.splice( index, 1 );
+  // recalculate and update DOM
+  calculateSalaryInformation();
+}; // end terminateEmployee

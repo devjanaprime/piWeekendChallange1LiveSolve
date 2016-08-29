@@ -1,0 +1,31 @@
+a {
+  color: indigo;
+  font-family: helvetica;
+}
+body {
+  font-family: courier;
+  background-color: #C0C0C0;
+}
+div {
+  font-family: courier;
+  margin-left: 3%;
+}
+h1 {
+  color: black;
+  font-family: arial;
+  margin-left: 1%;
+}
+h2 {
+  color: black;
+  font-family: arial;
+  margin-left: 2%;
+}
+h3 {
+  color: black;
+  font-family: arial;
+  margin-left: 2%;
+}
+p {
+  color: #000080;
+  font-family: courier;
+}
