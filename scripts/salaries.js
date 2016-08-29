@@ -12,16 +12,13 @@ var addEmployee = function(){
     jobTitle: document.getElementById( 'jobTitleIn' ).value,
     salary: document.getElementById( 'salaryIn' ).value
   }; // end new employee object
-  // clear inputs
-  document.getElementById( 'firstNameIn' ).value = '';
-  document.getElementById( 'lastNameIn' ).value = '';
-  document.getElementById( 'employeeIdIn' ).value = '';
-  document.getElementById( 'jobTitleIn' ).value = '';
-  document.getElementById( 'salaryIn' ).value = '';
   console.log( 'newEmployee', newEmployee );
   // push this employee in to the array
   employees.push( newEmployee );
   console.log( 'employees:', employees );
+  // clear inputs
+  clearInputs();
+  /// - maybe move to another function? - ///
   // calculate total salary and avg monthly salary
   var totalSalaries = 0;
   // for each employee add their salary on to the totalSalaries
@@ -34,6 +31,21 @@ var addEmployee = function(){
   console.log( 'averageSalary:', averageSalary );
   var monthlySalaryCost = totalSalaries / 12;
   console.log( 'monthlySalaryCost:', monthlySalaryCost );
+
+  displayEmployees( averageSalary, monthlySalaryCost, totalSalaries );
+}; // end addEmployee
+
+var clearInputs = function(){
+  console.log( 'in clearInputs' );
+  document.getElementById( 'firstNameIn' ).value = '';
+  document.getElementById( 'lastNameIn' ).value = '';
+  document.getElementById( 'employeeIdIn' ).value = '';
+  document.getElementById( 'jobTitleIn' ).value = '';
+  document.getElementById( 'salaryIn' ).value = '';
+}; // end clearInputs
+
+var displayEmployees = function( avgSal, monthlySal, totalSal ){
+  console.log( 'in displayEmployees' );
   // display info on DOM
   // clear output
   var outputDiv = document.getElementById( 'outputDiv' );
@@ -44,12 +56,12 @@ var addEmployee = function(){
     outputDiv.innerHTML += outputText;
   }
   // totalSalaries
-  outputText = '<p>Total salaries: $' + totalSalaries + '</p>';
+  outputText = '<p>Total salaries: $' + totalSal + '</p>';
   outputDiv.innerHTML += outputText;
   // averageSalary
-  outputText = '<p>Average Annual Salary: $' + averageSalary + '</p>';
+  outputText = '<p>Average Annual Salary: $' + avgSal + '</p>';
   outputDiv.innerHTML += outputText;
   // monthlySalaryCost
-  outputText = '<p>Monthly Salary Cost: $' + monthlySalaryCost + '</p>';
+  outputText = '<p>Monthly Salary Cost: $' + monthlySal + '</p>';
   outputDiv.innerHTML += outputText;
-}; // end addEmployee
+}; // end displayEmployees
